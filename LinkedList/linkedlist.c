@@ -11,44 +11,30 @@ struct color_list {
 
 int main(void)
 {
-	//srand((unsigned) time(&t));
-	struct timespec ts;
-      	clock_gettime(CLOCK_MONOTONIC, &ts);
-	srand((time_t)ts.tv_nsec);
+	srand((unsigned) time(&t));
 	enum colors
 	{	
 		blue,
 		green,
 		red,
-		violet,
+		violet
 	};
 
-	printf("%s",colors[violet]);
 	const char *get_color()
 	{
-		char result[]="";
+		char result[10]="";
 		enum colors color =  (enum colors)(rand() % 4);
 		switch (color)
 		{
-			case blue: 
-				result = "blue";
-				break;
-			case green: 
-				result = "green";
-                                break;
-			case red: 
-				result = "red";
-                                break;
-			case violet: 
-				result = "violet";
-                                break;
+			case blue: return "blue";
+			case green: return "green";
+			case red: return "red";
+			case violet: return "violet";
 		}
-		return result;
 	}
 
 	struct color_list *rootcolor = malloc( sizeof(struct color_list) );
 	struct color_list *nextcolor;
-
 	rootcolor->color = get_color();
 	rootcolor->next = malloc( sizeof(struct color_list) );
 	nextcolor = rootcolor->next;

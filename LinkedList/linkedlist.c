@@ -22,7 +22,7 @@ int main(void)
 
 	const char *get_color()
 	{
-		enum colors color =  (enum colors)rand() % 3;
+		enum colors color =  (enum colors)rand() % 4;
 		switch (color)
 		{
 			case blue: return "blue";

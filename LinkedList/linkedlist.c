@@ -20,14 +20,14 @@ int main(void)
 		blue,
 		green,
 		red,
-		violet
+		violet,
 	};
 
+	printf("%s",colors[violet]);
 	const char *get_color()
 	{
 		char result[]="";
 		enum colors color =  (enum colors)(rand() % 4);
-		printf("%s\n",color);
 		switch (color)
 		{
 			case blue: 

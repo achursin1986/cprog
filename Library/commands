@@ -1,0 +1,7 @@
+gcc -c -Wall -Werror -fPIC shared.c
+gcc -shared -o libshared.so -ggdb shared.o
+
+We compile it like this with the -L option to specify where it can
+find the shared library - presuming it is still in the same $PWD
+directory:
+gcc -L$PWD -Wall -Wextra -ggdb poller.c -o poller -lshared   (skip "lib" in name ans .so )

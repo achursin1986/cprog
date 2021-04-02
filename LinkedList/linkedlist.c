@@ -4,6 +4,7 @@
 
 
 time_t t;
+int i=0;
 struct color_list {
   const char* color;
   struct color_list *next;
@@ -33,24 +34,36 @@ int main(void)
 		}
 	}
 
-	struct color_list *rootcolor = malloc( sizeof(struct color_list) );
-	struct color_list *nextcolor;
-	rootcolor->color = get_color();
-	rootcolor->next = malloc( sizeof(struct color_list) );
-	nextcolor = rootcolor->next;
-	nextcolor->color = get_color();
-	nextcolor->next = malloc( sizeof(struct color_list) );
-	nextcolor->next->color = get_color();
-	nextcolor->next->next = 0;
+	struct color_list *color=malloc(sizeof(struct color_list));	
+	struct color_list *root = color;
+	struct color_list *tmp;
 
-	nextcolor = rootcolor;
-	while (nextcolor != 0)
+
+
+	while (color != 0)
 	{
-		printf("%s\n",nextcolor->color);
-		nextcolor = nextcolor->next;
-	}	
-	
+		if ( i < 5 ) {
+		color->color = get_color();
+		printf("%s\n",color->color);
+		color->next = malloc(sizeof(struct color_list));
+		color = color->next;
+		} 
+		else {
+			color->color = get_color();
+			color->next = 0;
+			break;
+		}
+		i++;
 
+	}
+
+	/* cleanup */
+	while (root != 0)
+	{
+		tmp = root;
+		root = root->next;
+		free(tmp);
+	}	
 
 
 }

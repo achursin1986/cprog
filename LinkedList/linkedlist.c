@@ -23,7 +23,6 @@ int main(void)
 
 	const char *get_color()
 	{
-		char result[10]="";
 		enum colors color =  (enum colors)(rand() % 4);
 		switch (color)
 		{
